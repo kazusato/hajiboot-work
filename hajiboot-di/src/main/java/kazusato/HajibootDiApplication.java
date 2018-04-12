@@ -6,14 +6,14 @@ import kazusato.app.Calculator;
 import kazusato.app.Frontend;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
 import java.util.Scanner;
 
-@EnableAutoConfiguration
-@ComponentScan
+@SpringBootApplication
 public class HajibootDiApplication {
 
     public static void main(String[] args) {
