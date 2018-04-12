@@ -1,9 +1,6 @@
 package kazusato;
 
-import kazusato.app.AddCalculator;
-import kazusato.app.ArgumentResolver;
-import kazusato.app.Calculator;
-import kazusato.app.ScannerArgumentResolver;
+import kazusato.app.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,4 +17,8 @@ public class AppConfig {
         return new ScannerArgumentResolver();
     }
 
+    @Bean
+    Frontend frontend() {
+        return new Frontend();
+    }
 }
