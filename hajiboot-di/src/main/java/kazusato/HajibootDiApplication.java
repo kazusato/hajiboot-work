@@ -1,5 +1,7 @@
 package kazusato;
 
+import kazusato.app.Argument;
+import kazusato.app.ArgumentResolver;
 import kazusato.app.Calculator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -14,14 +16,11 @@ public class HajibootDiApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(HajibootDiApplication.class, args);
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter 2 numbers like 'a b' : ");
-        int a = scanner.nextInt();
-        int b = scanner.nextInt();
-
+        ArgumentResolver argumentResolver = context.getBean(ArgumentResolver.class);
+        Argument argument = argumentResolver.resolve(System.in);
         Calculator calculator = context.getBean(Calculator.class);
-        int result = calculator.calc(a, b);
-
+        int result = calculator.calc(argument.getA(), argument.getB());
         System.out.println("result = " + result);
     }
 
