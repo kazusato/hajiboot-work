@@ -3,23 +3,30 @@ package kazusato;
 import kazusato.app.Argument;
 import kazusato.app.ArgumentResolver;
 import kazusato.app.Calculator;
-import kazusato.app.Frontend;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Import;
-
-import java.util.Scanner;
 
 @SpringBootApplication
-public class HajibootDiApplication {
+public class HajibootDiApplication implements CommandLineRunner {
+
+    @Autowired
+    ArgumentResolver argumentResolver;
+
+    @Autowired
+    Calculator calculator;
+
+    @Override
+    public void run(String... strings) throws Exception {
+        System.out.println("Enter 2 numbers like 'a b' : ");
+        Argument argument = argumentResolver.resolve(System.in);
+        int result = calculator.calc(argument.getA(), argument.getB());
+        System.out.println("result = " + result);
+    }
 
     public static void main(String[] args) {
-        ApplicationContext context = SpringApplication.run(HajibootDiApplication.class, args);
-        Frontend frontend = context.getBean(Frontend.class);
-        frontend.run();
+        SpringApplication.run(HajibootDiApplication.class, args);
     }
 
 }
