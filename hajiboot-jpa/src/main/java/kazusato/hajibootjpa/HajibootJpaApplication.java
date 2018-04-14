@@ -22,7 +22,7 @@ public class HajibootJpaApplication implements CommandLineRunner {
         System.out.println(created + " is created!");
 
         Pageable pageable = new PageRequest(0, 3);
-        Page<Customer> page = customerRepository.findAll(pageable);
+        Page<Customer> page = customerRepository.findAllOrderByName(pageable);
 
         System.out.println("1ページのデータ数=" + page.getSize());
         System.out.println("現在のページ=" + page.getNumber());
