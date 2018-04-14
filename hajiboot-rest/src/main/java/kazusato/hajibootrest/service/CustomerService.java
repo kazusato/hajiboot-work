@@ -3,6 +3,8 @@ package kazusato.hajibootrest.service;
 import kazusato.hajibootrest.domain.Customer;
 import kazusato.hajibootrest.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +17,10 @@ public class CustomerService {
 
     public List<Customer> findAll() {
         return customerRepository.findAll();
+    }
+
+    public Page<Customer> findAll(Pageable pageable) {
+        return customerRepository.findAll(pageable);
     }
 
     public Customer findOne(Integer id) {
