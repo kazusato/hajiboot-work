@@ -68,4 +68,10 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
+    @PostMapping(path = "delete")
+    String delete(@RequestParam Integer id) {
+        customerService.delete(id);
+        return "redirect:/customers";
+    }
+
 }
