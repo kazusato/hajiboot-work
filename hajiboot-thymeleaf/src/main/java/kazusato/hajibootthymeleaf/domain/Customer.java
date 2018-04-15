@@ -17,10 +17,12 @@ public class Customer {
     @GeneratedValue
     private Integer id;
 
-    @Column(nullable = false)
     private String firstName;
 
-    @Column(nullable = false)
     private String lastName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = true, name = "username")
+    private User user;
 
 }

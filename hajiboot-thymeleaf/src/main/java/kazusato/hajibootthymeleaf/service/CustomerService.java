@@ -1,6 +1,7 @@
 package kazusato.hajibootthymeleaf.service;
 
 import kazusato.hajibootthymeleaf.domain.Customer;
+import kazusato.hajibootthymeleaf.domain.User;
 import kazusato.hajibootthymeleaf.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,11 +28,11 @@ public class CustomerService {
         return customerRepository.findOne(id);
     }
 
-    public Customer create(Customer customer) {
+    public Customer create(Customer customer, User user) {
         return customerRepository.save(customer);
     }
 
-    public Customer update(Customer customer) {
+    public Customer update(Customer customer, User user) {
         return customerRepository.save(customer);
     }
 
