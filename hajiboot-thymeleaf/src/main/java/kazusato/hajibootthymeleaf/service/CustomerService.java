@@ -29,10 +29,12 @@ public class CustomerService {
     }
 
     public Customer create(Customer customer, User user) {
+        customer.setUser(user);
         return customerRepository.save(customer);
     }
 
     public Customer update(Customer customer, User user) {
+        customer.setUser(user);
         return customerRepository.save(customer);
     }
 
